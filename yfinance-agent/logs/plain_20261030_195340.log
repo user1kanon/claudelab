@@ -1,0 +1,72 @@
+19:53:40  PROMPT       Give me a snapshot of RELIANCE.NS
+19:53:42  SESSION      model=claude-opus-5-5  mcp=[{'name': 'yfinance', 'status': 'connected', 'source': 'dynamic'}]
+19:53:42  SKILLS       ['deep-research', 'design', 'design-sync', 'dataviz', 'update-config', 'verify', 'debug', 'code-review', 'simplify', 'batch', 'fewer-permission-prompts', 'doctor', 'loop', 'claude-api', 'workflow-authoring', 'run', 'run-skill-generator', 'plugin-authoring']
+19:53:45  TOOL CALL    ToolSearch  {'query': 'select:mcp__yfinance__get_stock_info,mcp__yfinance__get_historical_stock_prices,mcp__yfinance__get_yahoo_finance_news', 'max_results': 3}
+19:53:45  TOOL RESULT  ok  243 chars
+19:53:47  TOOL CALL    mcp__yfinance__get_stock_info  {'ticker': 'RELIANCE.NS'}
+19:53:48  TOOL CALL    mcp__yfinance__get_historical_stock_prices  {'ticker': 'RELIANCE.NS', 'period': '1mo'}
+19:53:48  TOOL CALL    mcp__yfinance__get_yahoo_finance_news  {'ticker': 'RELIANCE.NS'}
+19:53:51  TOOL RESULT  ok  8995 chars
+19:53:52  TOOL RESULT  ok  3867 chars
+19:53:54  TOOL RESULT  ok  43 chars
+19:54:15  DONE         turns=5  cost=$0.1231  tokens: in=8 out=2506 cache_read=58530
+
+# Reliance Industries Ltd (RELIANCE.NS), NSE snapshot
+
+**Price data is as of about 12:24 IST on Oct 30, 2026.** It is an intraday quote, delayed 15 minutes, and the market was still open.
+
+## Price
+| | |
+|---|---|
+| **Last** | ₹1,158.40 (−₹9.00 / **−0.77%**) |
+| Previous close / Open | ₹1,167.40 / ₹1,170.40 |
+| Day range | ₹1,157.10 – ₹1,174.60 |
+| 52-week range | ₹1,152.20 – ₹1,611.80 |
+| vs 52-week high | **−28.1%** (₹1,611.80 is also the all-time high) |
+| vs 52-week low | +0.5% |
+| 50-day / 200-day average | ₹1,235.56 / ₹1,324.50 (price is 6.2% and 12.5% below them) |
+| 52-week change | **−22.2%** (S&P 500 +13.2% for comparison) |
+| Volume (so far today) | 6.59M vs 3-month average of 12.54M |
+
+**Last month:** The stock closed at ₹1,187.00 on Sep 30, so it is down about 2.4% since then. It traded between ₹1,152.20 and ₹1,234.30. That low on Oct 13 set the 52-week low, and the stock is now trading just above it. It fell sharply on Oct 28 (−3.2% to ₹1,158 on 21.9M shares), and volume stayed heavy the next day.
+
+## Valuation
+| | |
+|---|---|
+| Market cap | ₹15.68 lakh crore (~₹15.68T) |
+| Enterprise value | ₹20.05T |
+| P/E trailing / forward | 20.98 / 16.30 |
+| PEG | 0.82 |
+| Price/Book | 1.73 |
+| Price/Sales | 1.39 |
+| EV/EBITDA | 11.10 |
+| Beta | 0.19 |
+
+## Fundamentals (trailing twelve months)
+- **Revenue:** ₹11.30T. Revenue growth is +29.7%.
+- **Net income:** ₹0.75T. EPS is ₹55.22 trailing and ₹71.06 forward.
+- **Earnings growth:** −22.4% year on year for the latest quarter (ended Jun 30, 2026). Revenue rose while profit fell.
+- **Margins:** gross 33.3%, EBITDA 16.0%, operating 12.3%, net 6.6%.
+- **Balance sheet:** cash ₹2.59T and debt ₹5.03T, so net debt is about ₹2.44T. Debt/Equity is 46.3.
+
+## Dividend
+- The last dividend was ₹6.00 per share (ex-date Jun 5, 2026). That is a yield of about 0.52%, and the payout ratio is 20.8%.
+- The data is inconsistent here: Yahoo shows the "trailing annual dividend rate" as 0, even though it lists the ₹6 dividend.
+
+## Analysts (25 opinions)
+- **Mean target is ₹1,666**, about 44% above the current price. The median is ₹1,690, and targets range from ₹1,350 to ₹1,890.
+- Even the lowest target is about 17% above the current price.
+- Yahoo gives no consensus rating; the field says "none".
+
+## Ownership
+- Insiders/promoters hold 51.8% and institutions hold 28.2%.
+
+## Coming up
+- **Earnings are due today, Oct 30, 2026, around 15:30 IST**, which is market close. Expect today's numbers to change once results are out.
+
+## News
+- The Yahoo Finance news tool returned **no articles** for RELIANCE.NS, so I can't say what caused the Oct 28 drop or what's behind the weak price.
+
+**Summary:** The stock is near its 52-week low, more than 20% below a year ago and below both moving averages. Revenue is growing fast, but profit fell in the latest quarter. On a forward basis it looks cheap compared with its history and with analyst targets, and today's results could move the price either way.
+
+*All figures come from Yahoo Finance via the yfinance tools. This is not investment advice.*

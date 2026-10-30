@@ -1,0 +1,20 @@
+{
+  "enabledPlugins": {
+    "askdb@askdb-skills": true,
+    "session-report@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "askdb-skills": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/user1kanon/askdb-plugin.git"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/anthropics/claude-plugins-official.git"
+      }
+    }
+  }
+}

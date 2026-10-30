@@ -1,0 +1,10 @@
+[project]
+name = "yfinance-agent"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=2.3.0",
+    "claude-agent-sdk>=0.2.175",
+    "fastmcp>=4.1.4",
+    "yfinance>=1.7.0",
+]

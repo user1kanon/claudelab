@@ -1,0 +1,213 @@
+name: chinook_sqlite
+display_name: Chinook Music Store
+path: C:/claudelab/askdbsite/data/chinook_sqlite.sqlite
+calendar:
+  fiscal_year_start_month: 1
+description: 'Sales data for a digital music store: artists, albums, tracks, customers, support employees,
+  invoices and playlists. Invoices span 2021-01-01 to 2025-12-22. Business rule: revenue is the sum of
+  Invoice.Total.'
+tables:
+- name: Album
+  description: Music albums. Each album belongs to one artist.
+  columns:
+  - name: AlbumId
+    type: INTEGER
+    primary_key: true
+  - name: Title
+    type: NVARCHAR(160)
+    description: Album title.
+  - name: ArtistId
+    type: INTEGER
+    references: Artist.ArtistId
+- name: Artist
+  description: Music artists or bands.
+  columns:
+  - name: ArtistId
+    type: INTEGER
+    primary_key: true
+  - name: Name
+    type: NVARCHAR(120)
+    description: Artist or band name.
+- name: Customer
+  description: Customers who buy music. Each customer is assigned a support representative from Employee.
+  columns:
+  - name: CustomerId
+    type: INTEGER
+    primary_key: true
+  - name: FirstName
+    type: NVARCHAR(40)
+  - name: LastName
+    type: NVARCHAR(20)
+  - name: Company
+    type: NVARCHAR(80)
+    description: Customer's company, if any.
+  - name: Address
+    type: NVARCHAR(70)
+  - name: City
+    type: NVARCHAR(40)
+  - name: State
+    type: NVARCHAR(40)
+  - name: Country
+    type: NVARCHAR(40)
+  - name: PostalCode
+    type: NVARCHAR(10)
+  - name: Phone
+    type: NVARCHAR(24)
+  - name: Fax
+    type: NVARCHAR(24)
+  - name: Email
+    type: NVARCHAR(60)
+  - name: SupportRepId
+    type: INTEGER
+    references: Employee.EmployeeId
+    description: Employee assigned to support this customer.
+- name: Employee
+  description: Store employees, including sales support representatives. ReportsTo forms the management
+    hierarchy.
+  columns:
+  - name: EmployeeId
+    type: INTEGER
+    primary_key: true
+  - name: LastName
+    type: NVARCHAR(20)
+  - name: FirstName
+    type: NVARCHAR(20)
+  - name: Title
+    type: NVARCHAR(30)
+    description: Job title.
+  - name: ReportsTo
+    type: INTEGER
+    references: Employee.EmployeeId
+    description: EmployeeId of this employee's manager; null for the top of the hierarchy.
+  - name: BirthDate
+    type: DATETIME
+  - name: HireDate
+    type: DATETIME
+  - name: Address
+    type: NVARCHAR(70)
+  - name: City
+    type: NVARCHAR(40)
+  - name: State
+    type: NVARCHAR(40)
+  - name: Country
+    type: NVARCHAR(40)
+  - name: PostalCode
+    type: NVARCHAR(10)
+  - name: Phone
+    type: NVARCHAR(24)
+  - name: Fax
+    type: NVARCHAR(24)
+  - name: Email
+    type: NVARCHAR(60)
+- name: Genre
+  description: Music genres (for example Rock, Jazz).
+  columns:
+  - name: GenreId
+    type: INTEGER
+    primary_key: true
+  - name: Name
+    type: NVARCHAR(120)
+    description: Genre name.
+- name: Invoice
+  description: One row per customer purchase. Line items are in InvoiceLine.
+  columns:
+  - name: InvoiceId
+    type: INTEGER
+    primary_key: true
+  - name: CustomerId
+    type: INTEGER
+    references: Customer.CustomerId
+  - name: InvoiceDate
+    type: DATETIME
+    description: Date and time of the purchase.
+  - name: BillingAddress
+    type: NVARCHAR(70)
+  - name: BillingCity
+    type: NVARCHAR(40)
+  - name: BillingState
+    type: NVARCHAR(40)
+  - name: BillingCountry
+    type: NVARCHAR(40)
+    description: Country the invoice was billed to.
+  - name: BillingPostalCode
+    type: NVARCHAR(10)
+  - name: Total
+    type: NUMERIC(10,2)
+    description: Invoice total amount. Revenue is the sum of this column.
+- name: InvoiceLine
+  description: Individual tracks purchased on an invoice.
+  columns:
+  - name: InvoiceLineId
+    type: INTEGER
+    primary_key: true
+  - name: InvoiceId
+    type: INTEGER
+    references: Invoice.InvoiceId
+  - name: TrackId
+    type: INTEGER
+    references: Track.TrackId
+  - name: UnitPrice
+    type: NUMERIC(10,2)
+    description: Price per unit of the track at time of purchase.
+  - name: Quantity
+    type: INTEGER
+    description: Number of units purchased.
+- name: MediaType
+  description: File formats tracks are available in (for example MPEG audio, AAC).
+  columns:
+  - name: MediaTypeId
+    type: INTEGER
+    primary_key: true
+  - name: Name
+    type: NVARCHAR(120)
+    description: Media type name.
+- name: Playlist
+  description: Named playlists of tracks.
+  columns:
+  - name: PlaylistId
+    type: INTEGER
+    primary_key: true
+  - name: Name
+    type: NVARCHAR(120)
+    description: Playlist name.
+- name: PlaylistTrack
+  description: Join table linking playlists to the tracks they contain.
+  columns:
+  - name: PlaylistId
+    type: INTEGER
+    primary_key: true
+    references: Playlist.PlaylistId
+  - name: TrackId
+    type: INTEGER
+    primary_key: true
+    references: Track.TrackId
+- name: Track
+  description: Individual songs available for purchase.
+  columns:
+  - name: TrackId
+    type: INTEGER
+    primary_key: true
+  - name: Name
+    type: NVARCHAR(200)
+    description: Track title.
+  - name: AlbumId
+    type: INTEGER
+    references: Album.AlbumId
+  - name: MediaTypeId
+    type: INTEGER
+    references: MediaType.MediaTypeId
+  - name: GenreId
+    type: INTEGER
+    references: Genre.GenreId
+  - name: Composer
+    type: NVARCHAR(220)
+    description: Composer(s) of the track; often null.
+  - name: Milliseconds
+    type: INTEGER
+    description: Track length in milliseconds.
+  - name: Bytes
+    type: INTEGER
+    description: File size in bytes.
+  - name: UnitPrice
+    type: NUMERIC(10,2)
+    description: Current list price per track.
